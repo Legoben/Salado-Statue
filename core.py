@@ -15,12 +15,12 @@ class Statue():
 #Tested using python 3.4
 class IndexHandler(web.RequestHandler):
     def get(self, *args, **kwargs):
-        self.write("hello world")
+        self.render("web/html/index.html")
 
 
 
 
-def startup(self):
+def startup():
     #hook up to statue
 
 
