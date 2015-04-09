@@ -1,0 +1,10 @@
+{
+  "webname":"mcoded",
+  "desc":"Send messages in morse code via the web interface [demo]",
+  "author":"Ben",
+
+  "routes":[
+    ["/", "MyPage"]
+  ]
+
+}

@@ -20,16 +20,14 @@ def callback():
 class IndexHandler(web.RequestHandler):
     def get(self, *args, **kwargs):
         self.write("hello world")
+        print("here")
 
 
 
 app = web.Application([
-     (r'/', IndexHandler),
+     ('/', IndexHandler),
     ])
 
-#start_server(9839)
-try:
-    _workers.apply_async(start_server, (9839,), 0, callback)
-except Exception as e:
-    print(e)
+start_server(9833)
+
 
