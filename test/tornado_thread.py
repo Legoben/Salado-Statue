@@ -19,15 +19,16 @@ def callback():
 
 class IndexHandler(web.RequestHandler):
     def get(self, *args, **kwargs):
-        self.write("hello world")
-        print("here")
+        self.write("DONO")
+        print("PINGED")
 
 
 
 app = web.Application([
-     ('/', IndexHandler),
-    ])
+     ('/getcount', IndexHandler),
+     ('/getcount/([^/]+)', IndexHandler),
+    ], debug=True)
 
-start_server(9833)
+start_server(9999)
 
 
