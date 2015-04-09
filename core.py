@@ -9,13 +9,9 @@ class Statue():
 
 
 
-
-#Tested using python 3.4
 class IndexHandler(web.RequestHandler):
     def get(self, *args, **kwargs):
         self.render("web/html/index.html")
-
-
 
 
 def startup():
