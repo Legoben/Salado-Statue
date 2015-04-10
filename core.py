@@ -3,6 +3,9 @@ import json as j
 import sys
 import os
 
+
+#Python 2.7
+
 class Statue():
     def __init__(self):
         pass
@@ -25,7 +28,11 @@ def startup():
     for d in dirs:
 
         print(d)
-        json = j.loads(open("plugins/"+d+"/conf.json").read())
+        try:
+            json = j.loads(open("plugins/"+d+"/conf.json").read())
+        except Exception:
+            continue
+
         exec "import plugins."+d+".main"
 
         js[json['webname']] = json
@@ -33,7 +40,7 @@ def startup():
         for p in json['routes']:
             pgs.append(("/"+json['webname']+p[0], eval("plugins."+d+".main."+p[1])))
             #if
-            pgs.append(("/"+json['webname']+p[0]+"/([^/]+)",p[1]))
+            pgs.append(("/"+json['webname']+p[0]+"/([^/]+)", eval("plugins."+d+".main."+p[1])))
 
         pages.extend(pgs)
 

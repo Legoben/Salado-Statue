@@ -4,7 +4,8 @@
   "author":"Ben",
 
   "routes":[
-    ["/", "MyPage"]
+    ["/", "MyPage"],
+    ["/send", "SendCode"]
   ]
 
 }
