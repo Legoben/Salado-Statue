@@ -45,9 +45,10 @@ code = {
 
 class SendCode(web.RequestHandler):
     def post(self, *args, **kwargs):
+        print("HERE")
         self.set_header("Content-Type", "application/json")
         text = self.get_argument("text", None)
-        if text == None:
+        if text == None or text == "":
             self.write(json.dumps({"error":True,"msg":"Text not found"}))
             return
 
@@ -61,6 +62,7 @@ class SendCode(web.RequestHandler):
 
         #ToDo: Do the lights
         self.write(json.dumps({"error":False, "msg":msg}))
+        print(msg)
 
 
 
@@ -69,7 +71,7 @@ class SendCode(web.RequestHandler):
 class MyPage(web.RequestHandler):
     def get(self, *args, **kwargs):
         #Do the thing
-        self.write("Hello World")
+        self.render("web/index.html")
         print("It worked!!")
 
         pass

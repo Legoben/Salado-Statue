@@ -14,17 +14,19 @@ class Statue():
 
 class IndexHandler(web.RequestHandler):
     def get(self, *args, **kwargs):
-        self.render("web/html/index.html")
+        #ToDo: Present login page if user is not authed
+        self.render("web/index.html", pages=jsa)
 
-
+jsn = {}
+jsa = []
 def startup():
-    #hook up to statue
+    #ToDo: hook up to statue
 
     thedir = "plugins"
     dirs = [ name for name in os.listdir(thedir) if os.path.isdir(os.path.join(thedir, name)) ]
 
     pages = [(r'/', IndexHandler)] #we need to add every page to this, along with the class(es) that viewing the page executes.
-    js = {}
+    
     for d in dirs:
 
         print(d)
@@ -35,7 +37,8 @@ def startup():
 
         exec "import plugins."+d+".main"
 
-        js[json['webname']] = json
+        jsn[json['webname']] = json
+        jsa.append(json)
         pgs = []
         for p in json['routes']:
             pgs.append(("/"+json['webname']+p[0], eval("plugins."+d+".main."+p[1])))
