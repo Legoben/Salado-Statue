@@ -1,0 +1,12 @@
+{
+  "name":"Music Visualizer",
+  "webname":"music",
+  "desc":"Visualize music using the lights [demo]",
+  "author":"Ben",
+
+  "routes":[
+    ["/", "MyPage"],
+    ["/up", "DoMusic"]
+  ]
+
+}
