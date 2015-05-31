@@ -33,6 +33,7 @@ class Lights():
 
     # load pattern from multi-array
     def loadPattern(self, pattern):
+        cdef int subarray_count, i
         GPIO.cleanup()
         GPIO.output(25, GPIO.LOW)
         for subarray_count in range(len(pattern)):
@@ -43,7 +44,7 @@ class Lights():
         GPIO.cleanup()
 
     # turn on a single light   Ex. light(12) - Turns on light number 12
-    def light(self, lightNum):
+    def light(self, int lightNum):
         sequence = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 
         sequence[lightNum] = 1
