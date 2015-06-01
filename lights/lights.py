@@ -39,6 +39,7 @@ class Lights():
             for i in range(16):
                 GPIO.output(self.serial_pin, pattern[subarray_count][i])
                 self.clock()
+            print "\033[92mShifted In: " + str(pattern[subarray_count]) + "\033[0m"
             self.latch()
         GPIO.cleanup()
 
