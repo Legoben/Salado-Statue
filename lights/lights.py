@@ -34,7 +34,7 @@ class Lights():
     # load pattern from multi-array
     def loadPattern(self, pattern):
         GPIO.cleanup()
-        GPIO.output(25, GPIO.LOW)
+        GPIO.output(self.latch_pin, GPIO.LOW)
         for subarray_count in range(len(pattern)):
             for i in range(16):
                 GPIO.output(self.serial_pin, pattern[subarray_count][i])
