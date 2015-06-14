@@ -33,13 +33,14 @@ class Lights():
         GPIO.output(self.latch_pin, GPIO.LOW)
 
     # load pattern from multi-array
-    def loadPattern(self, pattern):
+    def loadPattern(self, pattern, delay):
         GPIO.output(self.latch_pin, GPIO.LOW)
         for subarray_count in range(len(pattern)):
             for i in range(24):
                 GPIO.output(self.serial_pin, pattern[subarray_count][i])
                 self.clock()
             print "\033[92mShifted In: " + str(pattern[subarray_count]) + "\033[0m"
+            sleep(delay)
             self.latch()
 
     # turn on a single light   Ex. light(12) - Turns on light number 12
