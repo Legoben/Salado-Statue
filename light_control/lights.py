@@ -13,7 +13,6 @@ class Lights():
 
     # cleanup and init GPIO pins when class is created
     def __init__(self):
-	GPIO.cleanup()
         GPIO.setmode(GPIO.BCM)
         GPIO.setup(self.serial_pin, GPIO.OUT)
         GPIO.setup(self.clock_pin, GPIO.OUT)
@@ -22,14 +21,13 @@ class Lights():
     # clock bit
     def clock(self):
         GPIO.output(self.clock_pin, GPIO.HIGH)
-        sleep(0.1)
+        sleep(0.01)
         GPIO.output(self.clock_pin, GPIO.LOW)
-        sleep(0.1)
+        sleep(0.01)
 
     # set 16 bits to parallel output on the shift register
     def latch(self):
         GPIO.output(self.latch_pin, GPIO.HIGH)
-        sleep(0.1)
         GPIO.output(self.latch_pin, GPIO.LOW)
 
     # load pattern from multi-array
@@ -49,7 +47,7 @@ class Lights():
 
         sequence[lightNum] = 1
 
-        self.loadPattern([sequence])
+        self.loadPattern([sequence], 0)
 
     def __del__(self):
 	GPIO.cleanup()
