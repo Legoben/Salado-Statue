@@ -30,8 +30,17 @@ class Lights():
         GPIO.output(self.latch_pin, GPIO.HIGH)
         GPIO.output(self.latch_pin, GPIO.LOW)
 
+    # Convert Hexadecimal input to Binary
+    def parsehex(array):
+        for hex in range(len(array)):
+            array[hex] = bin(int(array[hex], 16))[2:]
+            array[hex] = [int(char) for char in array[hex]]
+        return array
+
     # load pattern from multi-array
-    def loadPattern(self, pattern, delay):
+    def loadPattern(self, pattern, delay, hexinput=True):
+        if hexinput:
+            pattern = parsehex(pattern)
         GPIO.output(self.latch_pin, GPIO.LOW)
         for subarray_count in range(len(pattern)):
             for i in range(24):
@@ -50,4 +59,4 @@ class Lights():
         self.loadPattern([sequence], 0)
 
     def __del__(self):
-	GPIO.cleanup()
+	    GPIO.cleanup()
