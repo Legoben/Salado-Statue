@@ -2,7 +2,7 @@ from tornado import web
 import json
 
 #morse code
-print "MCode Imported"
+print "Music Imported"
 
 class DoMusic(web.RequestHandler):
     def post(self, *args, **kwargs):
