@@ -3,7 +3,7 @@ import json as j
 import sys
 import os
 from time import sleep
-import RPi.GPIO as GPIO
+#import RPi.GPIO as GPIO
 
 
 # Python 2.7
@@ -17,6 +17,7 @@ class IndexHandler(web.RequestHandler):
 jsn = {}
 jsa = []
 
+"""
 class Lights():
     # GPIO pins
     serial_pin = 23
@@ -73,10 +74,11 @@ class Lights():
 
     def __del__(self):
         GPIO.cleanup()
+"""
 
 def startup():
 
-    statue = Lights()
+    #statue = Lights()
 
     #statue.loadPattern()
 
@@ -119,5 +121,5 @@ def startup():
 
     pass
 
-
-startup()
+if __name__ == "__main__":
+    startup()

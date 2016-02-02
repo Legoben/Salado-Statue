@@ -43,6 +43,7 @@ code = {
     "10":"-----"
 }
 
+#Honk for 5 dollars
 class SendCode(web.RequestHandler):
     def post(self, *args, **kwargs):
         print("HERE")
