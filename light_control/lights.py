@@ -31,9 +31,9 @@ class Lights():
         GPIO.output(self.latch_pin, GPIO.LOW)
 
     # Convert Hexadecimal input to Binary
-    def parsehex(array):
+    def parsehex(self, array):
         for hex in range(len(array)):
-            array[hex] = bin(int(array[hex], 16))[2:]
+            array[hex] = bin(int(array[hex], 16))[2:].zfill(24)
             array[hex] = [int(char) for char in array[hex]]
         return array
 
